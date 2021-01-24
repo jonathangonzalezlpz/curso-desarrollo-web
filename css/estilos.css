@@ -1,3 +1,4 @@
+/*Todos los elementos sin margin ni padding y border-box, el borde entra en las cuentas*/
 *{
     margin:0;
     padding:0;
@@ -6,4 +7,431 @@
 
 body{
     font-family:'Roboto', sans-serif;
+}
+
+/*Caracteristicas para todos los h*/
+h1, h2, h3, h4, h5, h6{ 
+    color: #1d273b;
+    font-weight: 300;
+}
+
+/*Hay dos claves contenedor y contenedor1*/
+/*margin auto centra todo*/
+/*max-width a 1000px, y con overflow aseguramos el comportamiento ante los elementos que sobrepasen
+el límite del contenedor, por defecto se crea un scrool, con hidden provocamos que el contenido sobrante
+se corte*/
+/*Muy importante maquetar el html pensando en contenedores*/
+.contenedor{
+    width: 90%;
+    max-width: 1000px;
+    margin:auto;
+    overflow: hidden;
+}
+/*Igual que contenedor y añadimos un padding de 60px*/
+.contenedor1{
+    width: 90%;
+    max-width: 1000px;
+    margin:auto;
+    overflow: hidden;
+    padding: 60px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+/*HEADER*/
+
+/*TRUCOOO para solucionar la rotura que provoca position:fixed, creamos una pseudoclase de forma que cree un contenedor previo al
+header con el alto, tambien podemos usar un margin-bottom, de este de forma que se haga una "Reserva" del hueco que va a ocupar header, para que al hacer position:fixed
+el resto de contenido no se desplace a tapar el hueco*/
+header:before{
+    content:"";
+    display: block;
+    height:80px;
+}
+
+nav{
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    border-bottom: 1px solid transparent;
+    box-shadow: 1px 1px 10px 0 rgba(0,0,0,.2);
+    position:fixed;
+    top:0;
+    z-index: 100;
+    /*transition: ease-in-out 0.5s;*/
+}
+
+/*Conseguimos que todos los elementos contenidos en el section class=nav se pongan en la misma línea*/
+/*justify-content: space-between hace que se separen los elementos cada uno a una esquina.*/
+.nav{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+}
+/*Ajustamos el logo al contenedor del header, fijamos el alto del contenedor al del header, 80px, y fijamos el alto de 
+la imagen al 100% del contenedor logo*/
+.nav .logo{
+    height:80px;
+}
+.nav .logo img{
+    height: 100%;
+    vertical-align:top;
+}
+
+.enlaces-header{
+    font-weight:300;
+}
+
+.nav .enlaces-header a{
+    color: #5D6668;
+    text-decoration: none;
+    margin-left:20px;
+}
+
+.hamburger{
+    width: 80px;
+    height: 80px;
+    display: none;
+    text-align: center;
+    z-index: 100;
+    cursor:pointer;
+    /*transition: color 05.s ease-in;*/
+}
+
+.hamburger > i{
+    font-size: 25px;
+    line-height: 80px;
+}
+
+/*align-items:center permite centrar el contenido verticalmente*/
+.contenido-header{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+/*con animation podemos definir animaciones mediante css, modificando determinadas propiedades*/
+.contenido-header>img{
+    width:550px;
+    animation: ease-in animat 1s;
+}
+
+/*Definimos una animación con el nombre animat y consistente en que cuando se inicia el elemento tenga una escala 0, tamaño 0, y
+cuando termine, 100%, la escala sea 1, su tamaño *1*/
+@keyframes animat{
+    0%{
+        transform: scale(0);
+    }100%{
+        transform: scale(1);
+    }
+}
+
+/* margin de 30 px a la izquierda lo que hace que lo empuje un poco y se reduzca*/
+.textos-header{
+    margin: 0 0 0 30px;
+}
+
+.contenido-header p{
+    font-weight: 100;
+    margin-top: 14px;
+    color:#5D6678;
+}
+
+/*podriamos poner inline-block o block dependiendo de gustos*/
+/*box-shadow para definir una sombra el primer valor es desplazamiento en eje x el segundo en el eje y el siguiente el difuminado
+o consistencia*/
+.contenido-header a{
+    margin:28px 0 0 0;
+    width: 130px;
+    display: inline-block;
+    background-color: #1FDE82;
+    text-align: center;
+    color: #fff;
+    padding:12px 0;
+    text-decoration: none;
+    font-weight: 400;
+    transform: uppercase;
+    font-size: 14px;
+    border-radius: 5px;
+    box-shadow: 0 8px 32px rgba(31,222,130,.46);
+}
+
+/*About Us*/
+.titulo{
+    font-size:50px;
+}
+
+.about-us{
+    background-color: #f2f2f2;;
+}
+
+/*Display Flex para ponerlos en línea, flex-wrap:wrap para que cuando no entren más se pongan debajo y
+justify-content:space-around para que haya espacio entre ellos*/
+/*Como cada articulo mide un 29% del contenedor, caben 3 por línea*/
+.contenedor-articulo{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    justify-content: space-around;
+}
+
+/* cuando definimos 4 parametros para margin o pading estos se corresponden respectivamente con ARRIBA, DERECHA, ABAJO, 
+IZQUIERDA.*/
+.articulo{
+    width:29%;
+    background:#fff;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding:45px 30px 60px 30px;
+    transition:0.5s;
+}
+
+.articulo:hover{
+    box-shadow: 0px 4px 10px rgba(17,29,48,.26);
+}
+
+.articulo>i{
+    font-size: 30px;
+    color:#fff;
+    background-color: #1FDE82;
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    padding-top:20px;
+    border-radius: 50%;
+    box-shadow: 0px 8px 32px rgba(31,222,130,.46);
+}
+
+.articulo > h3{
+    font-size: 24px;
+    margin-top:30px;
+}
+
+.articulo > p{
+    font-weight: 100;
+    color: #5D6678;
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+.articulo > a{
+    color: #5D6678;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.articulo>a:hover{
+    color:#1FDE82;
+    transition: color .5s;
+}
+
+/*Questions*/
+/*Muy similar a about us, casi el mismo código*/
+.questions{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.questions>img{
+    width:550px;
+}
+
+.textos-questions{
+    margin: 0 0 0 30px;
+}
+
+.textos-questions p{
+    font-weight: 100;
+    margin-top: 14px;
+    color:#5D6678;
+}
+
+.textos-questions a{
+    margin:28px 0 0 0;
+    width: 130px;
+    display: inline-block;
+    background-color: #1FDE82;
+    text-align: center;
+    color: #fff;
+    padding:12px 0;
+    text-decoration: none;
+    font-weight: 400;
+    transform: uppercase;
+    font-size: 14px;
+    border-radius: 5px;
+    box-shadow: 0 8px 32px rgba(31,222,130,.46);
+}
+
+/*results*/
+.results{
+    background-color: #2570ff;
+    padding-top: 30px;
+}
+
+/*justify-content:space-evenly quiere decir que los reparta de una manera equitativa*/
+.content-results{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*flex-wrap:wrap, si un elemento mide más del 60% que se baje a la siguiente línea*/
+.numbers{
+    width: 60%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+}
+
+/* cuando solo tenemos dos parametros para margin y pading se corresponden con ARRIBA-ABAJO, DERECHA-IZQUIERDA*/
+.numbers .number{
+    width: 45%;
+    background-color: rgba(255,255,255,.2);
+    color:white;
+    border-radius: 10px;
+    padding: 40px 35px;
+    margin-bottom: 20px;
+}
+
+.numbers .number h4{
+    color: #fff;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.numbers .number p{
+    color:#F2F5FC;
+    font-weight: 300;
+}
+
+/*La caja del texto puede medir como mucho 40%, ya que la otra mide 60%, ponemos un 37% para dejar un pequeño margen*/
+.results-text{
+    width: 37%;
+}
+
+.results-text h4{
+    color:#fff;
+    font-size:40px;
+}
+
+.results-text p{
+    color:#fff;
+    font-weight: 300;
+    margin:20px 0;
+}
+
+.results-text>a{
+    color:#fff;
+    text-decoration: none;
+    display: inline-block;
+    border:1px solid #fff;
+    padding: 10px 0;
+    width:120px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/*Services*/
+
+.services {
+    display: flex;
+    justify-content: space-between;
+}
+
+.services>img {
+    width: 500px;
+    height: 335px;
+}
+
+.box-skills {
+    margin: 30px 30px 0 0;
+}
+
+.box-skills h4 {
+    font-size: 24px;
+    background: #f2f2f2;
+    width: 350px;
+    border-radius: 6px;
+    padding: 10px 0 10px 15px;
+    margin-bottom: 10px;
+}
+
+.box-skills i {
+    color: #1FDE82;
+    font-size: 20px;
+}
+
+/*FOOTER*/
+footer{
+    background-color: #F2F2F2;
+    padding: 60px 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+.partFooter{
+    width: 20%;
+    text-align: center;
+}
+
+.partFooter h4{
+    color:#1d273b;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+/*Display block nos asegura tener uno debajo del otro, inline-block se pondrían al lado*/
+/*transition permite que el cambio de color se haga en .3s y que haya un inicio y salida de transicion lentos, mediante ease-in-our*/
+.partFooter a{
+    display: block;
+    text-decoration: none;
+    color:#5D6678;
+    font-weight: 300;
+    transition: color .3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.partFooter a:hover{
+    color: #1FDE82;
+}
+
+.partFooter img{
+    width: 70%;
+}
+
+/* Lo hacemos cuadrado para que el circulo quede bien y ponemos un line-height de su medida para centrarlo*/
+.social-media i{
+    font-size: 20px;
+    display: inline-block;
+    color:#adb6c7;
+    border:1px solid #adb6c7;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    line-height: 36px;
+    cursor:pointer;
+    margin-top: 20px;
+    text-align: center;
+    transition: all ease-in-out .3s;
+    margin-right: 5px;
+}
+
+.social-media i:hover{
+    color: #fff;
+    background-color: #1FDE82;
+    border-color: #1FDE82;
 }
