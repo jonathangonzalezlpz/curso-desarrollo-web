@@ -60,7 +60,7 @@ nav{
     position:fixed;
     top:0;
     z-index: 100;
-    /*transition: ease-in-out 0.5s;*/
+    transition: ease-in-out 0.5s; /*Junto con js suaviza el despliegue del menú*/
 }
 
 /*Conseguimos que todos los elementos contenidos en el section class=nav se pongan en la misma línea*/
@@ -85,6 +85,7 @@ la imagen al 100% del contenedor logo*/
 
 .enlaces-header{
     font-weight:300;
+    transition: ease-in-out 0.5s;
 }
 
 .nav .enlaces-header a{
@@ -100,7 +101,7 @@ la imagen al 100% del contenedor logo*/
     text-align: center;
     z-index: 100;
     cursor:pointer;
-    /*transition: color 05.s ease-in;*/
+    transition: color 0.5s ease-in;
 }
 
 .hamburger > i{
@@ -243,6 +244,7 @@ IZQUIERDA.*/
 }
 
 .questions>img{
+    visibility: hidden;
     width:550px;
 }
 
@@ -271,6 +273,7 @@ IZQUIERDA.*/
     border-radius: 5px;
     box-shadow: 0 8px 32px rgba(31,222,130,.46);
 }
+
 
 /*results*/
 .results{
@@ -349,6 +352,7 @@ IZQUIERDA.*/
 }
 
 .services>img {
+    visibility: hidden;
     width: 500px;
     height: 335px;
 }
@@ -542,8 +546,32 @@ footer{
         width: 200px;
     }
 
+    /*Hacemos que el menú con el gradiente ocupe la ventana completa*/
+    /*AÑADIMOS GRADIENTES DE uiGradients.com y descargamos el css*/
+    /*Además preparamos que el menú se despliegue, se realizará mediante js el despliegue,
+    como un circulo utilizando https://bennettfeely.com/clippy/*/
     .enlaces-header{
-        display: none;
+        position: fixed; /*Lo sacamos del flexbox*/
+        background: #667db6;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        top:0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        clip-path: circle(0.0% at 100% 0); /*pegado a la esquina oculto*/
+    }
+
+    .nav .menudos{
+        clip-path: circle(150.0% at 100% 0); /*desplegado*/
+    }
+
+    .nav .enlaces-header a{
+        color:white;
     }
 
     .hamburger{
