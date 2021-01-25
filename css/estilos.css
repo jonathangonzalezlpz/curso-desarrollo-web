@@ -71,6 +71,7 @@ nav{
     height: 80px;
     width: 100%;
     align-items: center;
+    padding:0 40px;
 }
 /*Ajustamos el logo al contenedor del header, fijamos el alto del contenedor al del header, 80px, y fijamos el alto de 
 la imagen al 100% del contenedor logo*/
@@ -235,7 +236,6 @@ IZQUIERDA.*/
 /*Questions*/
 /*Muy similar a about us, casi el mismo código*/
 .questions{
-    width: 100%;
     height: 600px;
     display: flex;
     justify-content: space-between;
@@ -434,4 +434,155 @@ footer{
     color: #fff;
     background-color: #1FDE82;
     border-color: #1FDE82;
+}
+
+/*Breakpoints responsive*/
+@media screen and (max-width:800px){
+    /*CONTENIDO HEADER*/
+    .title{
+        font-size: 45px;
+    }
+
+    /*El contenido de header pasa a estar en columna, si queremos invertir el orden de los elemetos TXT-IMG -> IMG-TXT utilizamos
+    column-reverse*/
+    .contenido-header{
+        flex-direction: column;
+        justify-content: space-evenly;
+        height:720px;
+    }
+
+    .contenido-header>img{
+        width:400px;
+    }
+
+    .textos-header{
+        margin:0;
+    }
+
+    /*ABOUT US*/
+    .articulo{
+        width: 45%;
+    }
+
+    /*QUESTIONS*/
+    .questions{
+        height: 720px;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+
+    .questions>img{
+        width: 400px;
+    }
+
+    /*RESULTS*/
+    .content-results{
+        flex-direction: column-reverse;
+    }
+
+    .results-text>a{
+        margin-bottom: 60px;
+    }
+    
+    .numbers{
+        width: 100%;
+    }
+
+    .results-text{
+        width: 100%;
+    }
+    
+    /*SERVICES*/
+    .services{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .box-skills{
+        margin: 0 0 40px 0;
+    }
+
+    .box-skills h4{
+        width: 500px;
+    }
+
+    .services>img{
+        width: 400px;
+    }
+
+    /*FOOTER*/
+    footer{
+        justify-content: space-evenly;
+    }
+
+    .partFooter{
+        width: 40%;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width:600px){
+    .titulo{
+        font-size:35px;
+    }
+
+    h1{
+        font-size: 40px;
+    }
+
+    .contenido-header{
+        height: 650px;
+    }
+
+    .nav{
+        padding: 0 10px;
+    }
+
+    .contenido-header>img{
+        width: 200px;
+    }
+
+    .enlaces-header{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    /*ABOUT US*/
+    .articulo{
+        width: 95%;
+    }
+
+    /*QUESTIONS*/
+    .questions>img{
+        width: 200px;
+    }
+
+    /*RESULTS*/
+    .numbers .number{
+        width: 95%;
+    }
+
+    .results-text h4{
+        font-size: 35px;
+    }
+
+    /*SERVICES*/
+    .services>img{
+        width: 200px;
+    }
+
+    .box-skills h4{
+        width: 100%;
+        padding-right: 14px;
+    }
+
+    /*FOOTER*/
+    .partFooter{
+        width: 95%;
+        margin-bottom: 40px;
+    }
+
 }
